@@ -10,7 +10,7 @@ int check_cycle(listint_t *list)
 {
 	listint_t *fast = list;
 
-	if (!fast)
+	if (!list)
 		return (0);
 	if (fast->next != NULL && fast->next->next != NULL)
 	{
