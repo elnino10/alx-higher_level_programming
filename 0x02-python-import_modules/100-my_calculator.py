@@ -11,17 +11,16 @@ if __name__ == "__main__":
     b = int(argv[3])
     operator = argv[2]
 
-    match operator:
-        case "+":
-            res = add(a, b)
-        case "-":
-            res = sub(a, b)
-        case "*":
-            res = mul(a, b)
-        case "/":
-            res = div(a, b)
-        case _:
-            print("Unknown operator. Available operators: +, -, * and /")
-            exit(1)
+    if operator == "+":
+        res = add(a, b)
+    elif operator == "-":
+        res = sub(a, b)
+    elif operator == "*":
+        res = mul(a, b)
+    elif operator == "/":
+        res = div(a, b)
+    else:
+        print("Unknown operator. Available operators: +, -, * and /")
+        exit(1)
 
     print("{} {} {} = {}".format(a, operator, b, res))
