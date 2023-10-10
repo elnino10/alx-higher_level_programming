@@ -10,8 +10,8 @@ listint_t *reverse_list(listint_t **head)
 {
 	listint_t *curr_node, *prev_node, *next_node;
 
-    if (*head == NULL)
-        return (NULL);
+	if (*head == NULL)
+		return (NULL);
 
 	curr_node = *head;
 	prev_node = next_node = NULL;
@@ -35,10 +35,10 @@ listint_t *reverse_list(listint_t **head)
  */
 int compare_lists(listint_t **first, listint_t **second)
 {
-    if (!first || !second)
-        return (0);
+	if (*first == NULL && *second == NULL)
+		return (1);
 
-	while ((*first)->next != NULL)
+	while ((*first)->next != NULL && (*second)->next != NULL)
 	{
 		if ((*first)->n != (*second)->n)
 		{
