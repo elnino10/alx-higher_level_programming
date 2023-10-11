@@ -15,5 +15,5 @@ def weight_average(my_list=[]):
         for num in range(2):
             if num == 1:
                 sum_weight += row[num]
-    
+
     return (sum_row / sum_weight)
