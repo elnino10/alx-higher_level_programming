@@ -11,6 +11,9 @@ def roman_to_int(roman_string):
 			'M': 1000}
 	result = 0
 
+	if not isinstance(roman_string, str) or roman_string is None:
+		return 0
+
 	prev_val = 0
 	for num in reversed(roman_string):
 		val = roman_num.get(num, 0)
