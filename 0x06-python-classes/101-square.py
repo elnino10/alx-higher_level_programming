@@ -10,8 +10,9 @@ class Square:
         self.__position = position
 
     def __str__(self):
-        prt = '{}'.format('\n' * self.__position[1]) + "\n".join(
-            [" " * self.__position[0] + '#' * self.__size] * self.__size)
+        prt = ("{}".format("\n" * self.__position[1]) + "\n".join(
+            [" " * self.__position[0] + "#" * self.__size] * self.__size)
+            ) if self.__size > 0 else ""
         return prt
 
     @property
