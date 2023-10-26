@@ -42,13 +42,11 @@ class Square:
     def my_print(self):
         """prints the square in character #"""
         if self.__size == 0:
-            print("")
-        else:
-            for i in range(self.__size):
-                for j in range(self.__size):
-                    print("#", end="")
-                print()
             print()
+        else:
+            print("{}".format("\n" * self.__position[1]), end="")
+            print("{}".format("\n".join(
+                [" " * self.__position[0] + "#" * self.__size] * self.__size)))
 
     @property
     def position(self):
