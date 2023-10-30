@@ -8,17 +8,12 @@
 
 
 class Rectangle():
-    """Rectangle module that defines a rectangle
-
-    >>> rect = Rectangle(2, 5)
-    >>> rect.__dict__
-    {'_Rectangle__width': 2, '_Rectangle__height': 5}
-    """
+    """Rectangle module that defines a rectangle"""
 
     def __init__(self, width=0, height=0):
         """instantiates object width values of width and height"""
-        self.__width = width
         self.__height = height
+        self.__width = width
 
     @property
     def width(self):
