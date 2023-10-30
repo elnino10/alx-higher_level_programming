@@ -6,12 +6,17 @@ class Rectangle():
     """Rectangle module that defines a rectangle"""
 
     def __init__(self, width=0, height=0):
+        """instantiates object width values of width and height"""
         self.__width = width
         self.__height = height
 
     def __str__(self):
+        """returns unofficial representation of the rectangle with
+        the character #
+        """
         return "{}".format(
-            ("#" * self.__width) + "\n") * self.__height if not (
+            ("#" * self.__width)) + "".join(
+                ["\n" + "#" * self.__width] * (self.__height - 1)) if not (
                 self.__height == 0 or self.__width == 0) else ""
 
     @property
