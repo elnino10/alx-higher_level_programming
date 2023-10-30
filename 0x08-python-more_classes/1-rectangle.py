@@ -1,9 +1,19 @@
 #!/usr/bin/python3
-"""The Rectangle class module"""
+"""The Rectangle class module
+
+>>> rect = Rectangle(3, 4)
+>>> rect.__dict__
+{'_Rectangle__width': 3, '_Rectangle__height': 4}
+"""
 
 
 class Rectangle():
-    """Rectangle module that defines a rectangle"""
+    """Rectangle module that defines a rectangle
+
+    >>> rect = Rectangle(2, 5)
+    >>> rect.__dict__
+    {'_Rectangle__width': 2, '_Rectangle__height': 5}
+    """
 
     def __init__(self, width=0, height=0):
         """instantiates object width values of width and height"""
