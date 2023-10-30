@@ -12,7 +12,6 @@ class Rectangle():
         """instantiates object width values of width and height"""
         self.__width = width
         self.__height = height
-        self.print_symbol = '#'
         Rectangle.number_of_instances += 1
 
     def __str__(self):
