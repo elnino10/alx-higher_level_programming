@@ -1,0 +1,39 @@
+The 3-say_my_name module
+
+Prints the first name and last name
+import say_my_name from 3-say_my_name
+
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+first_name and last_name are passed
+>>> say_my_name("John", "Doe")
+My name is John Doe
+
+Works when only one argument passed
+>>> say_my_name("John")
+My name is John 
+
+raises an exception when either or both arguments are not strings
+>>> say_my_name("John", 30) #doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+>>> say_my_name(20, "Foo") #doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+works when no arguments passed, no name is printed
+>>> say_my_name("")
+My name is  
+
+function must be called with one or two arguments
+>>> say_my_name(None) #doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+>>> say_my_name("foo", None)
+Traceback (most recent call last):
+TypeError: last_name must be a string

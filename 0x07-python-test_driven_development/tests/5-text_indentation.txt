@@ -1,0 +1,53 @@
+The 5-text_indentation module
+
+Using the function text_indentation
+prints a text with 2 new lines after each of these characters: ., ? and :
+
+import text_indentation from 5-text_indentation
+
+How to use:
+>>> text_indentation = __import__("5-text_indentation").text_indentation
+
+if character after special character is a whitespace, whitespace is removed
+>>> text_indentation("TDD no be childs. How are y'all coping? Activity: Sleep, eat and code")
+TDD no be childs.
+<BLANKLINE>
+How are y'all coping?
+<BLANKLINE>
+Activity:
+<BLANKLINE>
+Sleep, eat and code
+
+if character after special character is not whitespace, print character
+>>> text_indentation("TDD no be childs.How are y'all coping?Activity:Sleep, eat and code.")
+TDD no be childs.
+<BLANKLINE>
+How are y'all coping?
+<BLANKLINE>
+Activity:
+<BLANKLINE>
+Sleep, eat and code.
+<BLANKLINE>
+
+if only special characters are passed, they are printed
+>>> text_indentation(".?:")
+.
+<BLANKLINE>
+?
+<BLANKLINE>
+:
+<BLANKLINE>
+
+raises an exception when number is passed as argument
+>>> text_indentation(123) #doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+function should not be called without an argument
+>>> text_indentation(None) #doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+>>> text_indentation('a')
+a

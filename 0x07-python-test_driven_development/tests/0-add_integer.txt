@@ -1,0 +1,48 @@
+The 0-add_integer module
+
+Using the function add_integer()
+it returns the sum of two integers passed to it
+
+First import add_interger from 0-add_interger module:
+
+>>> add_integer = __import__('0-add_integer').add_integer
+
+How to use it:
+works for two positive integer values
+>>> add_integer(1, 2)
+3
+
+works for two negative integers
+>>> add_integer(-1, -2)
+-3
+
+works on floating numbers by truncating them
+>>> add_integer(1.4, 2.0)
+3
+
+raise TypeError when either or both values are characters or strings
+>>> add_integer(1, 'a') #doctest: +ELLIPSIS
+Traceback (most recent call last):
+  ...
+TypeError: b must be an integer
+
+>>> add_integer('a', 2) #doctest: +ELLIPSIS
+Traceback (most recent call last):
+  ...
+TypeError: a must be an integer
+
+works when only integer is passed
+>>> add_integer(1) #doctest: +ELLIPSIS
+99
+
+raise TypeError if None is passed as argument
+>>> add_integer(None) #doctest: +ELLIPSIS
+Traceback (most recent call last):
+  ...
+TypeError: a must be an integer
+
+>>> add_integer(1.5, None) #doctest: +ELLIPSIS
+Traceback (most recent call last):
+  ...
+TypeError: b must be an integer
+

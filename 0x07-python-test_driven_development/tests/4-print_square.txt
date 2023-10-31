@@ -1,0 +1,47 @@
+The 4-print_square module
+
+Using the function print_square
+it prints a square with the character #
+
+import print_square from 4-print_square
+
+How to use:
+>>> print_square = __import__("4-print_square").print_square
+
+works for integers
+>>> print_square(2)
+##
+##
+
+does not work with numbers less than 0
+>>> print_square(-3)
+Traceback (most recent call last):
+ValueError: size must be >= 0
+
+does not work for floating numbers
+>>> print_square(2.4)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> print_square(-2.4) #doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+does not work for strings or characters
+>>> print_square('foo') #doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+raises an exception for very large numbers
+>>> print_square(1e1000) #doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+value must not be None
+>>> print_square(None) #doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
