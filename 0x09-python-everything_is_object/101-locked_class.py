@@ -15,4 +15,4 @@ class LockedClass():
         else:
             super().__getattribute__(name)
             raise AttributeError(
-                "'LockedClass' object has no attribute '{name}'")
+                f"'{self}' object has no attribute '{name}'")
