@@ -5,6 +5,7 @@ works for two integers
 4
 """
 
+
 def add_integer(a, b=98):
     """returns sum of two intergers
     numbers must be casted to integers before adding
