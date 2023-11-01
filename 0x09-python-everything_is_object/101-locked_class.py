@@ -8,9 +8,6 @@ called first_name
 class LockedClass():
     """prevents dynamic instance creation"""
 
-    def __str__(self):
-        return ""
-
     def __setattr__(self, name, value):
         """sets attribute passed by user"""
         if name == "first_name":
