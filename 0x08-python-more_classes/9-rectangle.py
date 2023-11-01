@@ -10,6 +10,14 @@ class Rectangle():
 
     def __init__(self, width=0, height=0):
         """instantiates object width values of width and height"""
+        if not isinstance(width, int):
+            raise TypeError("width must be an integer")
+        if not isinstance(height, int):
+            raise TypeError("height must be an integer")
+        if width < 0:
+            raise ValueError("width must be >= 0")
+        if height < 0:
+            raise ValueError("height must be >= 0")
         self.__width = width
         self.__height = height
         Rectangle.number_of_instances += 1
@@ -72,17 +80,6 @@ class Rectangle():
         else:
             return (2 * self.__height) + (2 * self.__width)
 
-    @classmethod
-    def square(cls, size=0):
-        """returns a new Rectangle instance with
-        width == height == size
-        """
-        if not isinstance(size, int):
-            raise TypeError("width must be an integer")
-        if size < 0:
-            raise ValueError("width must be >= 0")
-        return cls(size, size)
-
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         if not isinstance(rect_1, Rectangle):
@@ -94,3 +91,10 @@ class Rectangle():
             return rect_1
         else:
             return rect_2
+
+    @classmethod
+    def square(cls, size=0):
+        """returns a new Rectangle instance with
+        width == height == size
+        """
+        return cls(size, size)
