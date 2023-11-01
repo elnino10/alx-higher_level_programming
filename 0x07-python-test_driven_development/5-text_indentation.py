@@ -24,7 +24,6 @@ def text_indentation(text):
 
         for char in text:
             if flag and char == " ":
-                print("", end="")
                 flag = False
             elif flag and not (char == " "):
                 print(char, end="")
