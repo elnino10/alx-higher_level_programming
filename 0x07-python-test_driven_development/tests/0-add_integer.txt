@@ -54,3 +54,17 @@ TypeError: a must be an integer
 >>> add_integer(5, 3.99999999999999999999999999999999999999999999999999999e+4000)
 Traceback (most recent call last):
 TypeError: b must be an integer
+
+>>> add_integer(2.2250738585072014e-318, -2)
+-2
+
+>>> add_integer(1.7976931348623157e+308, 5)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer(3.402823466e+38, 5)
+340282346600000016151267322115014000645
+
+>>> add_integer(3.402823466e+39, 5)
+Traceback (most recent call last):
+TypeError: a must be an integer
