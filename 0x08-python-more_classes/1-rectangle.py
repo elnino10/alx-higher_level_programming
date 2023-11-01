@@ -16,10 +16,25 @@ class Rectangle():
     >>> rect.__dict__
     {'_Rectangle__height': 4, '_Rectangle__width': 2}
 
+    >>> rect = Rectangle(2, -4)
+    >>> rect.__dict__
+    {'_Rectangle__height': -4, '_Rectangle__width': 2}
+
+    >>> rect = Rectangle(-2, 4)
+    >>> rect.__dict__
+    {'_Rectangle__height': 4, '_Rectangle__width': -2}
+
     >>> rect.width = 5
     >>> rect.height = 7
     >>> rect.__dict__
     {'_Rectangle__height': 7, '_Rectangle__width': 5}
+
+    >>> rect = Rectangle(-2, "2")
+    >>> rect.__dict__
+    {'_Rectangle__height': '2', '_Rectangle__width': -2}
+    >>> rect = Rectangle("a", 2)
+    >>> rect.__dict__
+    {'_Rectangle__height': 2, '_Rectangle__width': 'a'}
     """
 
     def __init__(self, width=0, height=0):
