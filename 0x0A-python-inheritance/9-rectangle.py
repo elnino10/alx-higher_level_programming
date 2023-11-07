@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""BaseGeometry class with area method"""
 
 
 class BaseGeometry:
