@@ -22,6 +22,7 @@ class BaseGeometry:
         if value < 1:
             raise ValueError("{} must be greater than 0".format(name))
 
+
 class Rectangle(BaseGeometry):
     """Rectangle class"""
 
@@ -44,6 +45,7 @@ class Rectangle(BaseGeometry):
     def area(self):
         """Area of rectangle"""
         return self.__width * self.__height
+
 
 class Square(Rectangle):
     """Square class"""
