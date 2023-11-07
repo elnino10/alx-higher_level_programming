@@ -1,9 +1,24 @@
 #!/usr/bin/python3
-"""BaseGeometry class"""
+"""BaseGeometry class
+
+# name = test area()
+>>> bg = BaseGeometry()
+>>> bg.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+"""
 
 
 class BaseGeometry:
-    """BaseGeometry class with area and integer validator methods"""
+    """BaseGeometry class with area and integer validator methods
+
+        >>> bg = BaseGeometry()
+    >>> bg.integer_validator("new", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: new must be greater than 0
+    """
 
     def area(self):
         """gets the area of a geometry
@@ -19,6 +34,6 @@ class BaseGeometry:
     def integer_validator(self, name, value):
         """validates value as an integer"""
         if not isinstance(value, int):
-            raise TypeError("{:s} must be an integer".format(name))
+            raise TypeError(f"{name} must be an integer")
         if value <= 0:
-            raise ValueError("{:s} must be greater than 0".format(name))
+            raise ValueError(f"{name} must be greater than 0")
