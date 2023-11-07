@@ -3,7 +3,7 @@
 
 
 class BaseGeometry:
-    """BaseGeometry class"""
+    """BaseGeometry class with area and integer validator methods"""
 
     def area(self):
         """gets the area of a geometry
