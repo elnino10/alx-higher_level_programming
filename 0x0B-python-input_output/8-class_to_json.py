@@ -3,7 +3,6 @@
 data structure (list, dictionary, string, integer and boolean)
 for JSON serialization of an object
 """
-import json
 
 
 def class_to_json(obj):
@@ -12,5 +11,4 @@ def class_to_json(obj):
     Args:
         obj (_class_): instance of a Class
     """
-    with open(obj, "r", encoding="utf-8") as _json:
-        return json.dumps(_json.read())
+    return obj.__dict__
