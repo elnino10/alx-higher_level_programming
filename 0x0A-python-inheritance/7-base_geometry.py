@@ -3,23 +3,23 @@
 
 # name = test area()
 >>> bg = BaseGeometry()
->>> bg.area()
+>>> bg.area() #doctest: +ELLIPSIS
 Traceback (most recent call last):
 ...
 Exception: area() is not implemented
 
->>> bg.integer_validator("new", (2,))
+>>> bg.integer_validator("new", (2,)) #doctest: +ELLIPSIS
 Traceback (most recent call last):
 ...
 TypeError: new must be an integer
 
->>> bg.integer_validator()
+>>> bg.integer_validator() #doctest: +ELLIPSIS
 Traceback (most recent call last):
 ...
 TypeError: BaseGeometry.integer_validator() missing 2 required \
 positional arguments: 'name' and 'value'
 
->>> bg.integer_validator("new")
+>>> bg.integer_validator("new") #doctest: +ELLIPSIS
 Traceback (most recent call last):
 ...
 TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
