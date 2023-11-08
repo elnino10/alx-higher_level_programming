@@ -22,7 +22,8 @@ positional arguments: 'name' and 'value'
 >>> bg.integer_validator("new") #doctest: +ELLIPSIS
 Traceback (most recent call last):
 ...
-TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+TypeError: BaseGeometry.integer_validator() missing 1 required \
+positional argument: 'value'
 """
 
 
