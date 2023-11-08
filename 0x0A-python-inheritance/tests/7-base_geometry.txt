@@ -51,17 +51,18 @@ Traceback (most recent call last):
 TypeError: new must be an integer
 
 
-#name = empty, value = empty
->>> bg.integer_validator() #doctest: +ELLIPSIS
+>>> bg.integer_validator("age", [2]) #doctest: +ELLIPSIS
 Traceback (most recent call last):
 ...
-TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+TypeError: age must be an integer
 
 
-#name = test empty for string argument
->>> bg.integer_validator("new") #doctest: +ELLIPSIS
+>>> bg.integer_validator("age", True)
+
+
+>>> bg.integer_validator("age", {3, 4}) #doctest: +ELLIPSIS
 Traceback (most recent call last):
 ...
-TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+TypeError: age must be an integer
 
 
