@@ -66,10 +66,8 @@ Traceback (most recent call last):
 TypeError: age must be an integer
 
 
-# name = test area()
->>> bg.area() #doctest: +ELLIPSIS
+#name = empty, value = empty
+>>> bg.integer_validator() #doctest: +ELLIPSIS
 Traceback (most recent call last):
 ...
-Exception: area() is not implemented
-
-
+TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
