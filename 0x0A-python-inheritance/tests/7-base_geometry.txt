@@ -8,8 +8,9 @@ This is an example text file in reStructuredText format.  First import
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
-# name = string, value = None
 >>> bg = BaseGeometry()
+>>> 
+# name = string, value = None
 >>> bg.integer_validator("name", None)
 Traceback (most recent call last):
 ...
@@ -17,7 +18,6 @@ TypeError: name must be an integer
 
 
 # name = string, value = string
->>> bg = BaseGeometry()
 >>> bg.integer_validator("name", "blue")
 Traceback (most recent call last):
 ...
@@ -25,7 +25,6 @@ TypeError: name must be an integer
 
 
 # name = string, value = negative
->>> bg = BaseGeometry()
 >>> bg.integer_validator("name", -1)
 Traceback (most recent call last):
 ...
@@ -33,10 +32,50 @@ ValueError: name must be greater than 0
 
 
 # name = test area()
->>> bg = BaseGeometry()
 >>> bg.area()
 Traceback (most recent call last):
 ...
 Exception: area() is not implemented
 
 
+#name = string, value = integer
+>>> bg.integer_validator("new", 2)
+>>>
+
+
+#name = string, value = 0
+>>> bg.integer_validator("new", 0)
+Traceback (most recent call last):
+...
+ValueError: new must be greater than 0
+
+
+#name = string, value =  tuple
+>>> bg.integer_validator("new", (2,))
+Traceback (most recent call last):
+...
+TypeError: new must be an integer
+
+
+#name = empty, value = empty
+>>> bg.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+
+#name = test empty for string argument
+>>> bg.integer_validator("new")
+Traceback (most recent call last):
+...
+TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+
+>>> bg.integer_validator("age", [2])
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+>>> bg.integer_validator("age", True)
+
+>>> bg.integer_validator("age", {3, 4})
+Traceback (most recent call last):
+TypeError: age must be an integer
