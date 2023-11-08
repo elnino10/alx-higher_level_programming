@@ -13,7 +13,7 @@ def pascal_triangle(n):
     Return:
         an empty list if n <= 0, or a list of lists of integers otherwise
     """
-    p_triangle = [[]]
+    p_tri = [[]]
     row = 1
     while row <= n:
         triangle_row = []
@@ -24,9 +24,9 @@ def pascal_triangle(n):
                 cell_val = 1
             else:
                 # add the two cells above
-                cell_val = p_triangle[row - 1][col - 1] + p_triangle[row - 1][col]
+                cell_val = p_tri[row - 1][col - 1] + p_tri[row - 1][col]
             triangle_row.append(cell_val)
-        p_triangle.append(triangle_row)
+        p_tri.append(triangle_row)
         row += 1
     # slice out the initializing empty list before returning
-    return p_triangle[1:]
+    return p_tri[1:]
