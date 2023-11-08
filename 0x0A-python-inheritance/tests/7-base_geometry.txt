@@ -9,7 +9,12 @@ This is an example text file in reStructuredText format.  First import
 
 
 >>> bg = BaseGeometry()
->>> 
+>>>
+
+#name = string, value = integer
+>>> bg.integer_validator("new", 2)
+>>>
+
 # name = string, value = None
 >>> bg.integer_validator("name", None) #doctest: +ELLIPSIS
 Traceback (most recent call last):
@@ -36,11 +41,6 @@ ValueError: name must be greater than 0
 Traceback (most recent call last):
 ...
 Exception: area() is not implemented
-
-
-#name = string, value = integer
->>> bg.integer_validator("new", 2)
->>>
 
 
 #name = string, value = 0
