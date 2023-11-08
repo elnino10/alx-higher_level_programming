@@ -7,13 +7,30 @@
 Traceback (most recent call last):
 ...
 Exception: area() is not implemented
+
+>>> bg.integer_validator("new", (2,))
+Traceback (most recent call last):
+...
+TypeError: new must be an integer
+
+>>> bg.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: BaseGeometry.integer_validator() missing 2 required \
+positional arguments: 'name' and 'value'
+
+>>> bg.integer_validator("new")
+Traceback (most recent call last):
+...
+TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
 """
 
 
 class BaseGeometry:
     """BaseGeometry class with area and integer validator methods
 
-        >>> bg = BaseGeometry()
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator("new", 0)
     Traceback (most recent call last):
     ...
@@ -21,18 +38,24 @@ class BaseGeometry:
     """
 
     def area(self):
-        """gets the area of a geometry
+        """gets area of geometry
 
-        keyword arguments:
-        none passed
-
-        return:
-        a general exception raised
+        Raises:
+            Exception: general exception raised
         """
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """validates value as an integer"""
+        """validates the value argument passed
+
+        Args:
+            name (str): name of argument
+            value (int): value to be validated
+
+        Raises:
+            TypeError: <name> must be an integer
+            ValueError: <name> must be greater than 0
+        """
         if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
         if value <= 0:
