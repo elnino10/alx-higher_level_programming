@@ -23,7 +23,7 @@ class Rectangle(Base):
         """
         super().__init__(id)
         for arg, name in zip((width, height, x, y), ("width", "height", "x", "y")):
-            if not isinstance(arg, int):
+            if not isinstance(arg, int) or arg is None:
                 raise TypeError(f"{name} must be an integer")
 
         for arg, name in zip((width, height), ("width", "height")):
