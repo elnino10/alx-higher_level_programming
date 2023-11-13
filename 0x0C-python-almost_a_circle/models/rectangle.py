@@ -22,9 +22,9 @@ class Rectangle(Base):
             id (int, optional): identification. Defaults to None.
         """
         super().__init__(id)
-        for arg, name in zip((width, height, x, y), ("width", "height", "x", "y")):
-            if not isinstance(arg, int) or arg is None:
-                raise TypeError(f"{name} must be an integer")
+        for k, v in zip((width, height, x, y), ("width", "height", "x", "y")):
+            if not isinstance(k, int) or k is None:
+                raise TypeError(f"{v} must be an integer")
 
         for arg, name in zip((width, height), ("width", "height")):
             if arg <= 0:
@@ -118,7 +118,8 @@ class Rectangle(Base):
             "{}".format("\n" * self.__y + " " * self.__x)
             + "".join(
                 "#" * self.__width
-                + ("\n" + " " * self.__x + ("#" * self.__width)) * (self.__height - 1)
+                + ("\n" + " " * self.__x + ("#" * self.__width)) * (
+                    self.__height - 1)
             )
         )
 
