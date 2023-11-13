@@ -66,7 +66,9 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set"""
-        inst = cls(2, 4)
+        from models.square import Square
+
+        inst = Square(2)
         inst.update(**dictionary)
         return inst
 
