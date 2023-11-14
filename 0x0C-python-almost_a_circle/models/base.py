@@ -66,9 +66,9 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set"""
-
-        inst = cls(2, 4)
-        inst.update(**dictionary)
+        if hasattr(cls, "__dict__"):
+            inst = cls(2, 4)
+            inst.update(**dictionary)
         return inst
 
     @classmethod
