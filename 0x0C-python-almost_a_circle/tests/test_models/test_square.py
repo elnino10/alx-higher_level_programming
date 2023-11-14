@@ -58,7 +58,25 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError):
             Square(1 + 2j, 4, 10, 45)
 
-    ###########################################
+    def test_size_list(self):
+        """width as a list"""
+        with self.assertRaises(TypeError):
+            Square([1, 2], 3)
+
+    def test_size_tuple(self):
+        """width as a tuple"""
+        with self.assertRaises(TypeError):
+            Square((1, 2), 3)
+
+    def test_size_dict(self):
+        """width as a dictionary"""
+        with self.assertRaises(TypeError):
+            Square({"a": 1, "b": 2}, 3)
+
+    def test_size_set(self):
+        """width as a set"""
+        with self.assertRaises(TypeError):
+            Square({"a", 2}, 3)
 
     def test_x_empty(self):
         """test when x not passed"""
@@ -105,6 +123,26 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError):
             Square(2, 2 + 1j, 3)
 
+    def test_x_list(self):
+        """x as a list"""
+        with self.assertRaises(TypeError):
+            Square(3, [1, 2])
+
+    def test_x_tuple(self):
+        """x as a tuple"""
+        with self.assertRaises(TypeError):
+            Square(3, (1, 2))
+
+    def test_x_dict(self):
+        """x as a dictionary"""
+        with self.assertRaises(TypeError):
+            Square(3, {"a": 1, "b": 2})
+
+    def test_x_set(self):
+        """x as a set"""
+        with self.assertRaises(TypeError):
+            Square(3, {"a", 2})
+
     def test_y_empty(self):
         """test when y not passed"""
         sqr = Square(2, 3)
@@ -149,3 +187,23 @@ class TestSquare(unittest.TestCase):
         """y is a complex number"""
         with self.assertRaises(TypeError):
             Square(2, 4, 2 + 1j, 5)
+
+    def test_y_list(self):
+        """y as a list"""
+        with self.assertRaises(TypeError):
+            Square(3, 2, [1, 2])
+
+    def test_y_tuple(self):
+        """y as a tuple"""
+        with self.assertRaises(TypeError):
+            Square(3, 2, (1, 2))
+
+    def test_y_dict(self):
+        """y as a dictionary"""
+        with self.assertRaises(TypeError):
+            Square(3, 4, {"a": 1, "b": 2})
+
+    def test_y_set(self):
+        """y as a set"""
+        with self.assertRaises(TypeError):
+            Square(3, 2, {"a", 2})

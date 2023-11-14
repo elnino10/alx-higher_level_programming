@@ -61,6 +61,26 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle(1 + 2j, 4)
 
+    def test_width_list(self):
+        """width as a list"""
+        with self.assertRaises(TypeError):
+            Rectangle([1, 2], 3)
+
+    def test_width_tuple(self):
+        """width as a tuple"""
+        with self.assertRaises(TypeError):
+            Rectangle((1, 2), 3)
+
+    def test_width_dict(self):
+        """width as a dictionary"""
+        with self.assertRaises(TypeError):
+            Rectangle({"a": 1, "b": 2}, 3)
+
+    def test_width_set(self):
+        """width as a set"""
+        with self.assertRaises(TypeError):
+            Rectangle({"a", 2}, 3)
+
     def test_height_non_empty(self):
         """tests for a non empty height with integer"""
         rect = Rectangle(2, 4)
@@ -105,6 +125,26 @@ class TestRectangle(unittest.TestCase):
         """width as a complex number"""
         with self.assertRaises(TypeError):
             Rectangle(2, 1 + 2j)
+
+    def test_height_list(self):
+        """height as a list"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, [1, 2])
+
+    def test_height_tuple(self):
+        """height as a tuple"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, (1, 2))
+
+    def test_height_dict(self):
+        """height as a dictionary"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, {"a": 1, "b": 2})
+
+    def test_height_set(self):
+        """height as a set"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, {"a", 2})
 
     def test_both_complex_num(self):
         """both as complex numbers"""
@@ -191,6 +231,26 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle(2, 4, 2 + 1j)
 
+    def test_x_list(self):
+        """x as a list"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, 2, [1, 2])
+
+    def test_x_tuple(self):
+        """x as a tuple"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, 2, (1, 2))
+
+    def test_x_dict(self):
+        """x as a dictionary"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, 4, {"a": 1, "b": 2})
+
+    def test_x_set(self):
+        """x as a set"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, 2, {"a", 2})
+
     def test_y_empty(self):
         """test when y not passed"""
         rect = Rectangle(2, 4, 3)
@@ -235,6 +295,26 @@ class TestRectangle(unittest.TestCase):
         """y is a complex number"""
         with self.assertRaises(TypeError):
             Rectangle(2, 4, 5, 2 + 1j)
+
+    def test_y_list(self):
+        """y as a list"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, 2, 1, [1, 2])
+
+    def test_y_tuple(self):
+        """y as a tuple"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, 2, 5, (1, 2))
+
+    def test_y_dict(self):
+        """y as a dictionary"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, 4, 2, {"a": 1, "b": 2})
+
+    def test_y_set(self):
+        """y as a set"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, 2, 1, {"a", 2})
 
     def test_all_none(self):
         """test when all arguments are none"""
@@ -333,15 +413,18 @@ class TestRectangle(unittest.TestCase):
         rect = Rectangle(5, 5, 1, 0, 1)
         print(rect)
         print_res = mock_stdout.getvalue().strip()
-        self.assertEqual(print_res, "[Rectangle] (1) 1/0 - 5/5")
+        self.assertEqual(
+            print_res,
+            "[Rectangle] (1) 1/0 - 5/5",
+        )
 
     @patch("sys.stdout", new_callable=StringIO)
     def test_str_without_id(self, mock_stdout):
         """test __str__ method"""
-        rect = Rectangle(5, 5, 1, 0)
+        rect = Rectangle(5, 5, 1, 0, 2)
         print(rect)
         print_res = mock_stdout.getvalue().strip()
-        self.assertEqual(print_res, "[Rectangle] (31) 1/0 - 5/5")
+        self.assertEqual(print_res, "[Rectangle] (2) 1/0 - 5/5")
 
     @patch("sys.stdout", new_callable=StringIO)
     def test_update(self, mock_stdout):
