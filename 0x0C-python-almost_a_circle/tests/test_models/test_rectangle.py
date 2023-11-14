@@ -458,3 +458,43 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(
             print_res, "{'id': 1, 'width': 2, 'height': 4, 'x': 5, 'y': 7}"
         )
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_create_dict_x(self, mock_output):
+        """test create"""
+        r = Rectangle(1, 5)
+        print(r.create(**{"id": 89, "width": 1, "height": 2, "x": 3}))
+        res = mock_output.getvalue().strip()
+        self.assertEqual(res, "[Rectangle] (89) 3/0 - 1/2")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_create_dict_y(self, mock_output):
+        """test create"""
+        r = Rectangle(1, 5)
+        print(r.create(**{"id": 89, "width": 1, "height": 2, "x": 3, "y": 4}))
+        res = mock_output.getvalue().strip()
+        self.assertEqual(res, "[Rectangle] (89) 3/4 - 1/2")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_create_dict(self, mock_output):
+        """test create"""
+        r1 = Rectangle(2, 4)
+        print(r1.create(**{"id": 89}))
+        res = mock_output.getvalue().strip()
+        self.assertEqual(res, "[Rectangle] (89) 0/0 - 2/4")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_create_dict_width(self, mock_output):
+        """test create"""
+        r2 = Rectangle(1, 5)
+        print(r2.create(**{"id": 89, "width": 1}))
+        res2 = mock_output.getvalue().strip()
+        self.assertEqual(res2, "[Rectangle] (89) 0/0 - 1/4")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_create_dict_height(self, mock_output):
+        """test create"""
+        r = Rectangle(1, 5)
+        print(r.create(**{"id": 89, "width": 1, "height": 2}))
+        res = mock_output.getvalue().strip()
+        self.assertEqual(res, "[Rectangle] (89) 0/0 - 1/2")

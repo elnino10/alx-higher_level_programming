@@ -2,6 +2,8 @@
 """test_square module
 """
 import unittest
+from io import StringIO
+from unittest.mock import patch
 
 from models.square import Square
 
@@ -12,6 +14,100 @@ class TestSquare(unittest.TestCase):
     Args:
         unittest (obj): testing framework
     """
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_square_args(self, mock_output):
+        """test for square"""
+        sqr = Square(2, 3, 5, 6)
+        print(sqr)
+        res = mock_output.getvalue().strip()
+        self.assertEqual(res, "[Square] (6) 3/5 - 2")
+
+    def test_square_negative_x(self):
+        """test for square"""
+        with self.assertRaises(ValueError):
+            Square(2, -6)
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_str_with_id(self, mock_stdout):
+        """test __str__ method"""
+        rect = Square(5, 5, 1, 1)
+        print(rect)
+        print_res = mock_stdout.getvalue().strip()
+        self.assertEqual(
+            print_res,
+            "[Square] (1) 5/1 - 5",
+        )
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_to_dictionary(self, mock_stdout):
+        """test to_dictionary method"""
+        rect = Square(2, 4, 5, 1)
+        print(rect.to_dictionary())
+        print_res = mock_stdout.getvalue().strip()
+        self.assertEqual(print_res, "{'id': 1, 'size': 2, 'x': 4, 'y': 5}")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_update(self, mock_stdout):
+        """test update method"""
+        rect = Square(5, 5, 1, 1)
+        rect.update(y=2)
+        rect.update(size=3)
+        rect.update(x=7)
+        rect.update(id=52)
+        print(rect)
+        print_res = mock_stdout.getvalue().strip()
+        self.assertEqual(print_res, "[Square] (52) 7/2 - 3")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_update_without_id(self, mock_stdout):
+        """update id"""
+        rect = Square(5, 5, 1, 0)
+        rect.update(2, 2, 2, 2)
+        rect.update(x=7)
+        print(rect)
+        print_res = mock_stdout.getvalue().strip()
+        self.assertEqual(print_res, "[Square] (2) 7/2 - 2")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_create_dict_x(self, mock_output):
+        """test create"""
+        r = Square(1, 5)
+        print(r.create(**{"id": 89, "size": 1, "x": 3}))
+        res = mock_output.getvalue().strip()
+        self.assertEqual(res, "[Square] (89) 3/0 - 1")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_create_dict_y(self, mock_output):
+        """test create"""
+        r = Square(1, 5)
+        print(r.create(**{"id": 89, "width": 1, "height": 2, "x": 3, "y": 4}))
+        res = mock_output.getvalue().strip()
+        self.assertEqual(res, "[Square] (89) 3/4 - 1")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_create_dict(self, mock_output):
+        """test create"""
+        r1 = Square(2, 4)
+        print(r1.create(**{"id": 89}))
+        res = mock_output.getvalue().strip()
+        self.assertEqual(res, "[Square] (89) 0/0 - 2")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_create_dict_width(self, mock_output):
+        """test create"""
+        r2 = Square(1, 5)
+        print(r2.create(**{"id": 89, "width": 1}))
+        res2 = mock_output.getvalue().strip()
+        self.assertEqual(res2, "[Square] (89) 0/0 - 1")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_create_dict_height(self, mock_output):
+        """test create"""
+        r = Square(1, 5)
+        print(r.create(**{"id": 89, "width": 1, "height": 2}))
+        res = mock_output.getvalue().strip()
+        self.assertEqual(res, "[Square] (89) 0/0 - 1")
 
     def test_size_non_empty(self):
         """tests for a non empty width with integer"""

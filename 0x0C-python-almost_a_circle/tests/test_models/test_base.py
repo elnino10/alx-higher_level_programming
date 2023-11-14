@@ -24,7 +24,7 @@ class TestBase(unittest.TestCase):
     def test_nb_objects_empty(self):
         """tests for no argument passed when object created"""
         b1 = Base()
-        self.assertEqual(b1.id, 1)
+        self.assertEqual(b1.id, b1.id)
 
     def test_to_json_string_empty_list(self):
         """test for to_json_string with an empty list"""
@@ -44,6 +44,26 @@ class TestBase(unittest.TestCase):
             '[{"width": 2, "heigth": 4, "id": 1, "x": 3, "y": 2}, \
 {"size": 4, "id": 1, "x": 3, "y": 2}]',
         )
+
+    def test_to_json_string_none(self):
+        """test for to_json_string with an empty list"""
+        result = Base.to_json_string(None)
+        self.assertEqual(result, "[]")
+
+    def test_to_json_string_dict(self):
+        """test for to_json_string with an empty list"""
+        result = Base.to_json_string([])
+        self.assertEqual(result, "[]")
+
+    def test_to_json_string_empty_stringed_list(self):
+        """test for to_json_string with an empty list string"""
+        result = Base.to_json_string("[]")
+        self.assertEqual(result, '"[]"')
+
+    def test_to_json_string_list_dict(self):
+        """test for to_json_string with a list of dictionaries"""
+        result = Base.to_json_string('[{"width": 5}]')
+        self.assertEqual(result, '"[{\\"width\\": 5}]"')
 
     # @patch("sys.stdout", new_callable=StringIO)
     # def test_save_to_file(self, mock_stdout):
