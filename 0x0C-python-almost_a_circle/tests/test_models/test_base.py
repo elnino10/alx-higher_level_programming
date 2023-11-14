@@ -65,22 +65,65 @@ class TestBase(unittest.TestCase):
         result = Base.to_json_string('[{"width": 5}]')
         self.assertEqual(result, '"[{\\"width\\": 5}]"')
 
-    # @patch("sys.stdout", new_callable=StringIO)
-    # def test_save_to_file(self, mock_stdout):
-    #     """test save_to_file"""
-    #     from models.rectangle import Rectangle
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_save_to_file(self, mock_output):
+        """test save_to_file"""
+        from models.rectangle import Rectangle
 
-    #     r1 = Rectangle(2, 3, 4, 5, 12)
-    #     r2 = Rectangle(3, 4, 5, 6, 10)
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
 
-    #     result = Base.save_to_file([r1, r2])
-    #     print(result)
-    #     print_out = mock_stdout.getvalue().strip()
+        with open("Rectangle.json", "r", encoding="utf-8") as f:
+            print(f.read())
 
-    #     # if os.path.exists("Rectangle.json"):
-    #     #     with open("Rectangle.json", "r", encoding="utf-8") as f:
-    #     #         print(f.read())
-    #     self.assertEqual(
-    #         print_out,
-    #         "[{'width': 2, 'height': 3, 'x': 4, 'y': 5, 'id': 12}, {'width': 3, 'height': 4, 'x': 5, 'y': 6, 'id': 10}]",
-    #     )
+            res = mock_output.getvalue().strip()
+
+        self.assertEqual(
+            res,
+            '[{"id": 2, "width": 10, "height": 7, "x": 2, "y": 8}, \
+{"id": 3, "width": 2, "height": 4, "x": 0, "y": 0}]',
+        )
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_save_to_file_none(self, mock_output):
+        """test save_to_file"""
+        from models.rectangle import Rectangle
+
+        Rectangle.save_to_file(None)
+
+        with open("Rectangle.json", "r", encoding="utf-8") as f:
+            print(f.read())
+
+            res = mock_output.getvalue().strip()
+
+        self.assertEqual(res, "[]")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_save_to_file_empty_list(self, mock_output):
+        """test save_to_file"""
+        from models.rectangle import Rectangle
+
+        Rectangle.save_to_file([])
+
+        with open("Rectangle.json", "r", encoding="utf-8") as f:
+            print(f.read())
+
+            res = mock_output.getvalue().strip()
+
+        self.assertEqual(res, "[]")
+
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_save_to_file_one_item_list(self, mock_output):
+        """test save_to_file"""
+        from models.rectangle import Rectangle
+
+        r = Rectangle(1, 2, 0, 0, 3)
+        Rectangle.save_to_file([r])
+
+        with open("Rectangle.json", "r", encoding="utf-8") as f:
+            print(f.read())
+
+            res = mock_output.getvalue().strip()
+
+        self.assertEqual(res, '[{"id": 3, "width": 1, "height": 2, "x": 0, "y": 0}]')
