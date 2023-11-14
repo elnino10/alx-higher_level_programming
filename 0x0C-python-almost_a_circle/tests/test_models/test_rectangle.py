@@ -421,10 +421,10 @@ class TestRectangle(unittest.TestCase):
     @patch("sys.stdout", new_callable=StringIO)
     def test_str_without_id(self, mock_stdout):
         """test __str__ method"""
-        rect = Rectangle(5, 5, 1, 0, 2)
+        rect = Rectangle(5, 5, 1, 0)
         print(rect)
         print_res = mock_stdout.getvalue().strip()
-        self.assertEqual(print_res, "[Rectangle] (2) 1/0 - 5/5")
+        self.assertEqual(print_res, f"[Rectangle] ({rect.id}) 1/0 - 5/5")
 
     @patch("sys.stdout", new_callable=StringIO)
     def test_update(self, mock_stdout):
