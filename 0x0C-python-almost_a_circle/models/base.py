@@ -16,6 +16,7 @@ class Base:
         Args:
             id (int, optional): identification. Defaults to None.
         """
+
         if id is not None:
             self.id = id
         else:
@@ -66,9 +67,11 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set"""
-        if dictionary is not None:
+        if str(cls.__name__) == "Rectangle":
             inst = cls(2, 4)
-            inst.update(**dictionary)
+        else:
+            inst = cls(2)
+        inst.update(**dictionary)
         return inst
 
     @classmethod
