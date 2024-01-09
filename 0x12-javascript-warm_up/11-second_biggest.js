@@ -12,13 +12,13 @@ if (process.argv.length < 4) {
       } else {
         if (secondMax === firstMax) {
           secondMax = parseInt(process.argv[i]);
-	} else {
+        } else {
           continue;
-	}
+        }
       }
     } else {
-        secondMax = firstMax;
-        firstMax = parseInt(process.argv[i]);
+      secondMax = firstMax;
+      firstMax = parseInt(process.argv[i]);
     }
   }
   console.log(secondMax);
