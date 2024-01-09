@@ -1,19 +1,20 @@
 #!/usr/bin/node
 
-if (process.argv[2] === undefined || process.argv[3] === undefined) {
+if (process.argv.length < 4) {
   console.log(0);
 } else {
-  let fmax = parseInt(process.argv[2]);
-  let nmax = parseInt(process.argv[3]);
-  process.argv.forEach((val, index) => {
-    if (index > 1) {
-      if (fmax < parseInt(val)) {
-        nmax = fmax;
-        fmax = parseInt(val);
-      } else if (parseInt(val) < fmax && parseInt(val) >= nmax) {
-        nmax = parseInt(val);
+  let firstMax = parseInt(process.argv[2]);
+  let secondMax = parseInt(process.argv[2]);
+  for (let i = 2; i < process.argv.length; i++) {
+    if (firstMax > parseInt(process.argv[i])) {
+      if (secondMax < parseInt(process.argv[i])) {
+        secondMax = parseInt(process.argv[i]);
+      } else {
+        continue;
       }
+    } else {
+      firstMax = parseInt(process.argv[i]);
     }
-  });
-  console.log(nmax);
+  }
+  console.log(secondMax);
 }
