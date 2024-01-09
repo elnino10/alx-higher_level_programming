@@ -6,19 +6,20 @@ if (process.argv.length < 4) {
   let firstMax = parseInt(process.argv[2]);
   let secondMax = parseInt(process.argv[2]);
   for (let i = 2; i < process.argv.length; i++) {
-    if (firstMax > parseInt(process.argv[i])) {
-      if (secondMax < parseInt(process.argv[i])) {
-        secondMax = parseInt(process.argv[i]);
+    const currArg = parseInt(process.argv[i]);
+    if (firstMax > currArg) {
+      if (secondMax < currArg) {
+        secondMax = currArg;
       } else {
         if (secondMax === firstMax) {
-          secondMax = parseInt(process.argv[i]);
+          secondMax = currArg;
         } else {
           continue;
         }
       }
     } else {
       secondMax = firstMax;
-      firstMax = parseInt(process.argv[i]);
+      firstMax = currArg;
     }
   }
   console.log(secondMax);
