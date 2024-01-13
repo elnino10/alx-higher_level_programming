@@ -34,7 +34,7 @@ def filter_cities(usr, passwd, db_name, state_name):
     i = 0
     while i < len(query_list):
         if i == len(query_list) - 1:
-            print(query_list[i])
+            print(f"{query_list[i]}")
         else:
             print(f"{query_list[i]}, ", end="")
         i += 1
