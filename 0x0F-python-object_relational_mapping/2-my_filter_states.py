@@ -22,7 +22,7 @@ def display_value(usr, passwd, db_name, state_name):
         host="localhost", port=3306, user=usr, passwd=passwd, db=db_name
     )
     cursor = db_conn.cursor()
-    query = "SELECT * FROM states WHERE name='{}' ORDER BY id ASC".format(state_name)
+    query = f"SELECT * FROM states WHERE name='{state_name}' ORDER BY id ASC"
     cursor.execute(query)
     data = cursor.fetchall()
 
