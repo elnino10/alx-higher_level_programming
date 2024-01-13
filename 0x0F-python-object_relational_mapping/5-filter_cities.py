@@ -27,8 +27,17 @@ def filter_cities(usr, passwd, db_name, state_name):
     cursor.execute(query, (state_name,))
     data = cursor.fetchall()
 
+    query_list = []
     for val in data:
-        print(val)
+        query_list += val
+
+    i = 0
+    while i < len(query_list):
+        if i == len(query_list) - 1:
+            print(query_list[i])
+        else:
+            print(f"{query_list[i]}, ", end="")
+        i += 1
 
     cursor.close()
     db_conn.close()
