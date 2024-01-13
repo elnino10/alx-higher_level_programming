@@ -10,7 +10,9 @@ from sqlalchemy.orm import sessionmaker
 
 from model_state import Base, State
 
-DATABASE_URI = f'mysql+mysqldb://{sys.argv[1]}:{sys.argv[2]}@localhost:3306/{sys.argv[3]}'
+DATABASE_URI = 'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+        sys.argv[1], sys.argv[2], sys.argv[3]
+    )
 
 if __name__ == '__main__':
     engine = create_engine(DATABASE_URI, pool_pre_ping=True)
