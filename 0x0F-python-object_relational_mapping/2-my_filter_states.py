@@ -8,7 +8,7 @@ import sys
 import MySQLdb
 
 
-def display_value(usr, passwd, db_name, state_name):
+def filter_states(usr, passwd, db_name, state_name):
     """displays values where state name matches state_name
 
     Args:
@@ -35,4 +35,4 @@ def display_value(usr, passwd, db_name, state_name):
 
 if __name__ == "__main__":
     u_name, password, database, state = sys.argv[1:5]
-    display_value(u_name, password, database, state)
+    filter_states(u_name, password, database, state)
