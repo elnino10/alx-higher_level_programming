@@ -29,15 +29,10 @@ def filter_cities(usr, passwd, db_name, state_name):
 
     query_list = []
     for val in data:
-        query_list += val
+        query_list.append(val[0])
 
-    i = 0
-    while i < len(query_list):
-        if i == len(query_list) - 1:
-            print(f"{query_list[i]}")
-        else:
-            print(f"{query_list[i]}, ", end="")
-        i += 1
+    cities_str = ", ".join(query_list)
+    print(cities_str)
 
     cursor.close()
     db_conn.close()
