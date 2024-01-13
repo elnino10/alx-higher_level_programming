@@ -13,12 +13,11 @@ class State(Base):
     """state class that inherits from Base
 
     Args:
-        Base (class): declarative base class
+    Base (class): declarative base class
     """
 
     __tablename__ = "states"
-    id = Column(Integer, autoincrement="auto", nullable=False, primary_key=True)
-    name = Column(
-        String(128),
-        nullable=False,
+    id = Column(
+        Integer, primary_key=True, nullable=False, autoincrement="auto"
     )
+    name = Column(String(128), nullable=False)
