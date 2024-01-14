@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Lists all City objects.
+"""Lists all City objects"""
 import sys
 
 from sqlalchemy import create_engine
