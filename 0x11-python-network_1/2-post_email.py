@@ -10,11 +10,11 @@ if __name__ == "__main__":
     import urllib.request
 
     url = sys.argv[1]
-    email_arg = sys.argv[2]
+    email_arg = {"email": sys.argv[2]}
 
-    email_arg = urllib.parse.urlencode(email_arg)
-    email = email_arg.encode("ascii")
-    req = urllib.request.Request(url, email)
+    # encode parameter to utf-8
+    email_data = urllib.parse.urlencode(email_arg).encode("utf-8")
+    req = urllib.request.Request(url, email_data)
     with urllib.request.urlopen(req) as response:
-        res = response.read()
+        res = response.read().decode()
         print(f"Your email is: {res}")
