@@ -13,4 +13,4 @@ if __name__ == "__main__":
     email_arg = {"email": sys.argv[2]}
 
     res = requests.post(url, email_arg)
-    print(res)
+    print(res.text)
