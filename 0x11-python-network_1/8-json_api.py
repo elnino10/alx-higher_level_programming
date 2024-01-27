@@ -15,9 +15,9 @@ if __name__ == "__main__":
         else:
             var = {"q": sys.argv[1]}
         res = requests.post(url, var)
-        if res.json().status_code == 204:
-            print("No result")
-        else:
+        if res.json():
             print(f"[{res.json().id}] {res.json().name}")
-    except requests.exceptions.JSONDecodeError as e:
+        else:
+            print("No result")
+    except ValueError as e:
         print("Not a valid JSON")
