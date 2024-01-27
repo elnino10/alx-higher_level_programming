@@ -11,12 +11,12 @@ if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     payload = {"login": username}
-    url = f"https://api.github.com/users/"
+    url = f"https://api.github.com/user"
 
     res = requests.get(url, params=payload, auth=(username, password))
     json_data = res.json()
 
-    if json_data:
-        print(json_data["id"])
-    else:
+    try:
+        print(json_data['id'])
+    except KeyError:
         print("None")
