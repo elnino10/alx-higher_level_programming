@@ -15,8 +15,9 @@ if __name__ == "__main__":
         else:
             var = {"q": sys.argv[1]}
         res = requests.post(url, var)
-        if res.json():
-            print(f"[{res.json().id}] {res.json().name}")
+        json_data = res.json()
+        if json_data:
+            print(f"[{json_data['id']}] {json_data['name']}")
         else:
             print("No result")
     except ValueError as e:
