@@ -1,5 +1,6 @@
 #!/usr/bin/node
-// Number of films with the given character ID
+// script that prints the number of movies where the character 'Wedge Antilles' is present.
+// Wedge Antilles is character ID 18 - your script must use this ID for filtering the result of the API
 const request = require('request');
 
 const urlEndpoint = process.argv[2];
